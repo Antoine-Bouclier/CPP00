@@ -6,13 +6,14 @@
 /*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 10:02:35 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/11 09:14:34 by abouclie         ###   ########.fr       */
+/*   Updated: 2025/09/11 10:29:47 by abouclie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact() {
+Contact::Contact()
+{
 
 }
 
