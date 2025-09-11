@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 10:02:35 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/08 10:33:15 by abouclie         ###   ########.fr       */
+/*   Updated: 2025/09/11 09:14:34 by abouclie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,52 @@ Contact::Contact() {
 
 }
 
-void Contact::setFirstName(const std::string& first_name) {
+void Contact::setFirstName(const std::string& first_name)
+{
 	this->_first_name = first_name;
 }
 
-void Contact::setLastName(const std::string& last_name) {
+void Contact::setLastName(const std::string& last_name)
+{
 	this->_last_name = last_name;
 }
 
-void Contact::setPhoneNumber(const std::string& number) {
+void Contact::setNickName(const std::string& nickname)
+{
+	this->_nickname = nickname;
+}
+
+void Contact::setDarkestSecret(const std::string& darkest_secret)
+{
+	this->_darkest_secret = darkest_secret;
+}
+
+void Contact::setPhoneNumber(const std::string& number)
+{
 	this->_number = number;
 }
 
-std::string Contact::getFirstName() const {
+std::string Contact::getFirstName() const
+{
 	return _first_name;
 }
 
-std::string Contact::getLastName() const {
+std::string Contact::getLastName() const
+{
 	return _last_name;
 }
 
-std::string Contact::getPhoneNumber() const {
-	return _number;
+std::string Contact::getNickname() const
+{
+	return _nickname;
 }
 
-int	main()
+std::string	Contact::getDarkestSecret() const
 {
-	Contact c;
+	return _darkest_secret;
+}
 
-	c.setFirstName("Jean");
-	c.setLastName("Dupont");
-	c.setPhoneNumber("0123456789");
-
-	std::cout << "Prénom : " << c.getFirstName() << std::endl;
-	std::cout << "Nom : " << c.getLastName() << std::endl;
-	std::cout << "Téléphone : " << c.getPhoneNumber() << std::endl;
-
-	return 0;
+std::string Contact::getPhoneNumber() const
+{
+	return _number;
 }
