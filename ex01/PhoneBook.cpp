@@ -1,35 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 09:48:32 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/24 08:26:58 by abouclie         ###   ########lyon.fr   */
+/*   Created: 2025/09/24 08:23:25 by abouclie          #+#    #+#             */
+/*   Updated: 2025/09/24 08:56:41 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "PhoneBook.hpp"
 
-#include <iostream>
-#include <string>
-#include "Contact.hpp"
-
-class	PhoneBook
-{
-	private:
-		Contact _contacts[8];
-		int _nextIndex;
-		int _size;
-
-	public:
-		PhoneBook();
-
-		void addContact(const Contact& c);
-		void displayContacts() const;
-		void searchContact(int index) const;
-};
-
-#endif
