@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 08:16:29 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/11 09:28:30 by abouclie         ###   ########.fr       */
+/*   Updated: 2025/09/27 10:28:05 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 static int	new_contact(Contact &c)
 {
@@ -38,22 +40,39 @@ static int	new_contact(Contact &c)
 int	main(void)
 {
 	Contact		c;
+	PhoneBook	p;
 	std::string	input;
+	int			index;
 
 	while (1)
 	{
 		std::cout << "Command:";
 		std::cin >> input;
 		if (input == "ADD")
-			new_contact(c);
-		else if (input == "DISPLAY")
 		{
-			std::cout << "Firstname : " << c.getFirstName() << std::endl;
-			std::cout << "Lastname : " << c.getLastName() << std::endl;
-			std::cout << "nickname : " << c.getNickname() << std::endl;
-			std::cout << "Darkest secret : " << c.getDarkestSecret() << std::endl;
-			std::cout << "Number : " << c.getPhoneNumber() << std::endl;
+			new_contact(c);
+			p.addContact(c);
 		}
+		else if (input == "SEARCH")
+		{
+			p.displayContacts();
+			std::cout << "Entrez un index : ";
+    		std::getline(std::cin, input);
+
+    		try
+			{
+       			index = std::atoi(input);  // convertit string en int
+        		p.searchContact(index);       // appel fonction avec l'entier
+   			}
+    		catch (const std::invalid_argument& e)
+			{
+        		std::cout << "Entrée invalide, ce n'est pas un entier !" << std::endl;
+			}
+    		catch (const std::out_of_range& e)
+			{
+        		std::cout << "Entrée invalide, nombre trop grand !" << std::endl;
+			}
+    	}
 		else if (input == "EXIT")
 			break;
 	}
