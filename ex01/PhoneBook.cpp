@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 08:23:25 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/27 10:16:50 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/09/29 13:20:23 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,14 @@ void PhoneBook::displayContacts() const
 
 void PhoneBook::searchContact(int index) const
 {
-	std::cout << "Firstname : " << this->_contacts[index].getFirstName() << std::endl;
-	std::cout << "Lastname : " << this->_contacts[index].getLastName() << std::endl;
-	std::cout << "nickname : " << this->_contacts[index].getNickname() << std::endl;
-	std::cout << "Darkest secret : " << this->_contacts[index].getDarkestSecret() << std::endl;
-	std::cout << "Number : " << this->_contacts[index].getPhoneNumber() << std::endl;
+	if (index <= this->_size)
+	{
+		std::cout << "Firstname : " << this->_contacts[index].getFirstName() << std::endl;
+		std::cout << "Lastname : " << this->_contacts[index].getLastName() << std::endl;
+		std::cout << "nickname : " << this->_contacts[index].getNickname() << std::endl;
+		std::cout << "Darkest secret : " << this->_contacts[index].getDarkestSecret() << std::endl;
+		std::cout << "Number : " << this->_contacts[index].getPhoneNumber() << std::endl;
+	}
+	else
+		std::cout << "Index " << index << " doesnt exist" << std::endl;
 }

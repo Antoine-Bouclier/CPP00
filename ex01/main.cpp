@@ -6,11 +6,12 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 08:16:29 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/27 10:28:05 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/09/29 16:16:37 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
+#include <cstdlib>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
@@ -42,7 +43,7 @@ int	main(void)
 	Contact		c;
 	PhoneBook	p;
 	std::string	input;
-	int			index;
+	long int	index;
 
 	while (1)
 	{
@@ -56,23 +57,22 @@ int	main(void)
 		else if (input == "SEARCH")
 		{
 			p.displayContacts();
-			std::cout << "Entrez un index : ";
-    		std::getline(std::cin, input);
-
-    		try
+			while (1)
 			{
-       			index = std::atoi(input);  // convertit string en int
-        		p.searchContact(index);       // appel fonction avec l'entier
-   			}
-    		catch (const std::invalid_argument& e)
-			{
-        		std::cout << "Entrée invalide, ce n'est pas un entier !" << std::endl;
+				std::cout << "Entrez un index : ";
+				std::cin >> input;
+				
+				index = std::strtol(input.c_str(), NULL, 10);
+				std::cout << index << std::endl;
+				if (index > 7 || index < 0)
+					std::cout << "Out of range" << std::endl;
+				else
+				{
+					p.searchContact(index);
+					break;
+				}
 			}
-    		catch (const std::out_of_range& e)
-			{
-        		std::cout << "Entrée invalide, nombre trop grand !" << std::endl;
-			}
-    	}
+		}
 		else if (input == "EXIT")
 			break;
 	}
