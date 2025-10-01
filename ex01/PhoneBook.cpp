@@ -6,13 +6,14 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 08:23:25 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/29 13:20:23 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/01 08:54:22 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <iomanip>
 
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook() : _nextIndex(0), _size(0)
 {
 
 }
@@ -37,7 +38,7 @@ void PhoneBook::displayContacts() const
 	std::cout << "     index|first name| last name|  nickname" << std::endl;
 	for (int i = 0; i < this->_size; i++)
 	{
-		std::cout << "        0" << i << "|"
+		std::cout << std::setw(10) << i << "|"
 				  << formatColumn(this->_contacts[i].getFirstName()) << "|"
 				  << formatColumn(this->_contacts[i].getLastName()) << "|"
 				  << formatColumn(this->_contacts[i].getNickname()) << std::endl;
@@ -46,7 +47,7 @@ void PhoneBook::displayContacts() const
 
 void PhoneBook::searchContact(int index) const
 {
-	if (index <= this->_size)
+	if (index >= 0 && index <= this->_size)
 	{
 		std::cout << "Firstname : " << this->_contacts[index].getFirstName() << std::endl;
 		std::cout << "Lastname : " << this->_contacts[index].getLastName() << std::endl;
@@ -56,4 +57,9 @@ void PhoneBook::searchContact(int index) const
 	}
 	else
 		std::cout << "Index " << index << " doesnt exist" << std::endl;
+}
+
+int	PhoneBook::getSize() const
+{
+	return _size;
 }
