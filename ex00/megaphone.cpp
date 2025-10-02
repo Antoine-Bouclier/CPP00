@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 09:48:15 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/08 09:48:18 by abouclie         ###   ########.fr       */
+/*   Updated: 2025/10/02 09:46:41 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <iostream>
-
 
 int main(int argc, char **argv)
 {
