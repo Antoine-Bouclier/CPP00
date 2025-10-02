@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 09:48:21 by abouclie          #+#    #+#             */
-/*   Updated: 2025/09/11 09:08:47 by abouclie         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:06:53 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ class	Contact
 		std::string getNickname() const;
 		std::string getDarkestSecret() const;
 		std::string getPhoneNumber() const;
-
-		void	displayShort() const;
-		void	displayFull() const;
 };
 
 #endif
