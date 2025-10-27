@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 08:16:29 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/01 10:52:04 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/27 13:41:38 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	search(PhoneBook p)
 		return;
 	}
 	std::cout << "Enter index (0-" << p.getSize() - 1 << "): ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	if (!input.empty() && 
 		std::find_if(input.begin(), input.end(), notDigit) == input.end())
 	{
@@ -47,27 +47,33 @@ static void	search(PhoneBook p)
 		std::cout << "Invalid input" << std::endl;
 }
 
-static int	new_contact(Contact &c)
+std::string	new_field(std::string str)
 {
 	std::string	input;
+	
+	while (input.empty())
+	{
+		std::cout << str;
+		std::getline(std::cin, input);
+	}
+	return (input);
+}
 
-	std::cout << "Firstname : ";
-	std::cin >> input;
-	c.setFirstName(input);
-	std::cout << "Lastname : ";
-	std::cin >> input;
-	c.setLastName(input);
-	std::cout << "nickname :";
-	std::cin >> input;
-	c.setNickName(input);
-	std::cout << "Darkest secret : ";
-	std::cin >> input;
-	c.setDarkestSecret(input);
-	std::cout << "Number : ";
-	std::cin >> input;
-	c.setPhoneNumber(input);
-	std::cout << "Contact registered" << std::endl;
-	return (0);
+static void	new_contact(Contact &c)
+{
+	std::string	input;
+	
+	c.setFirstName(new_field("Firstname : "));
+	c.setLastName(new_field("Lastname : "));
+	c.setNickName(new_field("Nickname : "));
+	c.setDarkestSecret(new_field("Darkest secret : "));
+	while (1)
+	{
+		input = new_field("Number (Digit only): ");
+		if (std::find_if(input.begin(), input.end(), notDigit) == input.end())
+			break ;
+	}
+	c.setPhoneNumber(std::strtol(input.c_str(), NULL, 10));
 }
 
 int	main(void)
@@ -78,16 +84,16 @@ int	main(void)
 
 	while (1)
 	{
-		std::cout << "Command:";
-		std::cin >> input;
-		if (input == "ADD")
+		std::cout << "Command: ";
+		std::getline(std::cin, input);
+		if (std::cin.eof() || input.compare("EXIT") == 0)
+			break;
+		else if (input.compare("ADD") == 0)
 		{
 			new_contact(c);
 			p.addContact(c);
 		}
-		else if (input == "SEARCH")
+		else if (input.compare("SEARCH") == 0)
 			search(p);
-		else if (input == "EXIT")
-			break;
 	}
 }

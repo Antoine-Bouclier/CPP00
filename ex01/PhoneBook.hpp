@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 09:48:32 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/01 08:54:43 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/26 14:13:44 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	PhoneBook
 
 	public:
 		PhoneBook();
-
+		~PhoneBook();
 		void	addContact(const Contact& c);
 		void	displayContacts() const;
 		void	searchContact(int index) const;

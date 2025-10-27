@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 09:48:21 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/01 13:06:53 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/27 12:52:13 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@
 class	Contact
 {
 	private:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nickname;
-		std::string	_darkest_secret;
-		std::string	_number;
+		std::string		_first_name;
+		std::string		_last_name;
+		std::string		_nickname;
+		std::string		_darkest_secret;
+		unsigned int	_number;
 	public:
 		Contact();
-		
+		~Contact();
 		void	setFirstName(const std::string& first_name);
 		void	setLastName(const std::string& last_name);
 		void	setNickName(const std::string& nickname);
 		void	setDarkestSecret(const std::string& darkest_secret);
-		void	setPhoneNumber(const std::string& number);
+		void	setPhoneNumber(const unsigned int& number);
 
-		std::string getFirstName() const;
-		std::string getLastName() const;
-		std::string getNickname() const;
-		std::string getDarkestSecret() const;
-		std::string getPhoneNumber() const;
+		std::string		getFirstName() const;
+		std::string		getLastName() const;
+		std::string		getNickname() const;
+		std::string		getDarkestSecret() const;
+		unsigned int	getPhoneNumber() const;
 };
 
 #endif

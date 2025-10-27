@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 08:23:25 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/02 09:38:09 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/26 14:13:26 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include <iomanip>
 
 PhoneBook::PhoneBook() : _nextIndex(0), _size(0)
+{
+
+}
+
+PhoneBook::~PhoneBook(void)
 {
 
 }
