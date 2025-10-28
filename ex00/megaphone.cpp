@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 09:48:15 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/27 12:35:18 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/28 11:04:20 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main(int argc, char **argv)
 		{
 			for (int j = 0; argv[i][j]; j++)
 				str += static_cast<char>(std::toupper(argv[i][j]));
-			str += " ";
 		}
 	}
 	std::cout << str << std::endl;

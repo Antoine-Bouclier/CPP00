@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 08:16:29 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/27 13:41:38 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/28 11:41:15 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,23 @@ static void	search(PhoneBook p)
 	}
 	std::cout << "Enter index (0-" << p.getSize() - 1 << "): ";
 	std::getline(std::cin, input);
-	if (!input.empty() && 
-		std::find_if(input.begin(), input.end(), notDigit) == input.end())
+	while (1)
 	{
-		index = std::strtol(input.c_str(), NULL, 10);
-		if (index < 0 || index >= p.getSize())
-			std::cout << "Out of range" << std::endl;
+		if (!input.empty() && 
+			std::find_if(input.begin(), input.end(), notDigit) == input.end())
+		{
+			index = std::strtol(input.c_str(), NULL, 10);
+			if (index < 0 || index >= p.getSize())
+				std::cout << "Out of range" << std::endl;
+			else
+			{
+				p.searchContact(index);
+				break ;
+			}
+		}
 		else
-			p.searchContact(index);
+			std::cout << "Invalid input" << std::endl;
 	}
-	else
-		std::cout << "Invalid input" << std::endl;
 }
 
 std::string	new_field(std::string str)
@@ -53,6 +59,8 @@ std::string	new_field(std::string str)
 	
 	while (input.empty())
 	{
+		if (std::cin.eof())
+			break;
 		std::cout << str;
 		std::getline(std::cin, input);
 	}
@@ -69,6 +77,8 @@ static void	new_contact(Contact &c)
 	c.setDarkestSecret(new_field("Darkest secret : "));
 	while (1)
 	{
+		if (std::cin.eof() || input.compare("EXIT") == 0)
+			break;
 		input = new_field("Number (Digit only): ");
 		if (std::find_if(input.begin(), input.end(), notDigit) == input.end())
 			break ;
