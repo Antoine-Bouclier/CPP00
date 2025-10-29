@@ -6,21 +6,13 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 10:02:35 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/27 12:52:54 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/29 14:32:14 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-
-Contact::Contact()
-{
-
-}
-
-Contact::~Contact()
-{
-
-}
+#include <algorithm>
+#include <sstream>
 
 void Contact::setFirstName(const std::string& first_name)
 {
@@ -70,4 +62,58 @@ std::string	Contact::getDarkestSecret() const
 unsigned int	Contact::getPhoneNumber() const
 {
 	return _number;
+}
+
+/* -- Add Contact -- */
+
+static bool	notDigit(unsigned char c)
+{
+	return !std::isdigit(c);
+}
+
+static bool	new_field(const std::string &prompt, std::string &input)
+{
+	input.clear();
+	while (1)
+	{
+		std::cout << prompt;
+		if (!std::getline(std::cin, input))
+			return (false);
+		if (!input.empty())
+			return (true);
+		std::cout << "⚠️ Empty input, please try again." << std::endl;
+	}
+}
+
+bool	Contact::addContact()
+{
+	std::string			input;
+	std::stringstream	ss_input;
+	unsigned int		number;
+
+	if (!new_field("Firstname : ", input))
+		return (false);
+	this->setFirstName(input);
+	if (!new_field("Lastname : ", input))
+		return (false);
+	this->setLastName(input);
+	if (!new_field("Nickname : ", input))
+		return (false);
+	this->setNickName(input);
+	if (!new_field("Darkest secret : ", input))
+		return (false);
+	this->setDarkestSecret(input);
+	while (1)
+	{
+		if (!new_field("Number : ", input))
+			return (false);
+		if (std::find_if(input.begin(), input.end(), notDigit) == input.end())
+			break;
+		std::cout << "❌ Invalid number, Digit only allowed" << std::endl;
+	}
+	ss_input << input;
+	ss_input >> number;
+	this->setPhoneNumber(number);
+
+	return (true);
 }

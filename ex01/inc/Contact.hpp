@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 09:48:21 by abouclie          #+#    #+#             */
-/*   Updated: 2025/10/27 12:52:13 by abouclie         ###   ########lyon.fr   */
+/*   Updated: 2025/10/29 13:54:35 by abouclie         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class	Contact
 		std::string		_darkest_secret;
 		unsigned int	_number;
 	public:
-		Contact();
-		~Contact();
 		void	setFirstName(const std::string& first_name);
 		void	setLastName(const std::string& last_name);
 		void	setNickName(const std::string& nickname);
@@ -38,6 +36,8 @@ class	Contact
 		std::string		getNickname() const;
 		std::string		getDarkestSecret() const;
 		unsigned int	getPhoneNumber() const;
+
+		bool			addContact();
 };
 
 #endif
