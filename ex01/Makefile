@@ -1,21 +1,40 @@
-NAME = PhoneBook
+NAME		=	PhoneBook
+CC			=	c++
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC = Contact.cpp PhoneBook.cpp main.cpp
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+INC_DIR		=	inc/
 
-CXX = c++
+SRC_FILES	=	Contact.cpp PhoneBook.cpp main.cpp
+OBJ_FILES	=	$(SRC_FILES:.cpp=.o)
+DEP_FILES	=	$(OBJ_FILES:.o=.d)
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ			=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+DEP			=	$(addprefix $(OBJ_DIR), $(DEP_FILES))
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(SRC)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
 
 clean:
-	rm -f $(NAME)
+	@if [ -d "$(OBJ_DIR)" ]; then \
+		rm -rf $(OBJ_DIR); \
+	fi
 
 fclean: clean
+	@if [ -f "$(NAME)" ]; then \
+		rm -f $(NAME); \
+	fi
 
 re: fclean all
+
+-include $(DEP)
 
 .PHONY: all clean fclean re
